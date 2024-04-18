@@ -6,7 +6,19 @@
 Note: оценки всегда будут уникальными (поэтому никаких повторяющихся значений) */
 
 function myLanguages(results) {
+  let arr=[];
 
+  let entries = Object.entries(results);
+
+  entries.sort((a, b) => b[1] - a[1]);
+
+  for (let [key, value] of entries) {
+    if (value >= 60) {
+      arr.push(key);
+    }
+  }
+
+  return arr;
 }
 
 

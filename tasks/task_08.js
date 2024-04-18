@@ -36,7 +36,81 @@ A component will not appear at all if its value happens to be zero. Hence, 1 min
 *
 * * */
 function formatDuration (seconds) {
+    //1min=60sec
+    //1hour=3600sec
+    //1day=86400sec
+    //1year=31536000sec
 
+    let res="";
+    let time={};
+
+    while (seconds!=0) {
+        if (Math.floor(seconds/31536000)>0) {
+            if (Math.floor(seconds/31536000)>1) {
+                time.year=Math.floor(seconds/31536000)+" years";
+            }
+            else {
+                time.year=Math.floor(seconds/31536000)+" year";
+            }
+            seconds=seconds-(Math.floor(seconds/31536000)*31536000);
+            continue;
+        }
+        else if (Math.floor(seconds/86400)>0) {
+            if (Math.floor(seconds/86400)>1) {
+                time.day=Math.floor(seconds/86400)+" days";
+            }
+            else {
+                time.day=Math.floor(seconds/86400)+" day";
+            }
+            seconds=seconds-(Math.floor(seconds/86400)*86400);
+            continue;
+        }
+        else if (Math.floor(seconds/3600)>0) {
+            if (Math.floor(seconds/3600)>1) {
+                time.hour=Math.floor(seconds/3600)+" hours";
+            }
+            else {
+                time.hour=Math.floor(seconds/3600)+" hour";
+            }
+            seconds=seconds-(Math.floor(seconds/3600)*3600);
+            continue;
+        }
+        else if (Math.floor(seconds/60)>0) {
+            if (Math.floor(seconds/60)>1) {
+                time.min=Math.floor(seconds/60)+" minutes";
+            }
+            else {
+                time.min=Math.floor(seconds/60)+" minute";
+            }
+            seconds=seconds-(Math.floor(seconds/60)*60);
+            continue;
+        }
+        else {
+            if (seconds==1) {
+                time.sec=seconds+" second";
+            }
+            else {
+                time.sec=seconds+" seconds";
+            }
+            seconds=0;
+        }
+    }
+
+    let valArr = Object.values(time);
+
+    for (let i=0;i<valArr.length;i++) {
+        if (i==valArr.length-2) {
+            res=res+valArr[i]+" and ";
+        }
+        else if (i==valArr.length-1) {
+            res=res+valArr[i];
+        }
+        else {
+            res=res+valArr[i]+", ";
+        }
+    }
+
+    return res;
 }
 
 

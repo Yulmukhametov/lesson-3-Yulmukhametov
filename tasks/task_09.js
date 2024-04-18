@@ -17,7 +17,15 @@ function isGTten(el){
 * */
 
 function multiFilter() {
-
+   let arr=Array.from(arguments);
+   return function(element) {
+      for (let i=0; i<arr.length; i++) {
+          if (arr[i](element)==false) {
+              return false;
+          }
+      }
+      return true;
+  };
 }
 
 module.exports = multiFilter

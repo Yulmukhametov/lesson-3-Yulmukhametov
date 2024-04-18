@@ -3,7 +3,16 @@
 * */
 
 function isPalindrome(str) {
+    let a;
 
+    if (str===str.split('').reverse().join('')) {
+        a = true;
+    }
+    else {
+        a = false;
+    }
+
+    return a;
 }
 
 

@@ -11,7 +11,21 @@ logOnce = один раз(console.log)
 logOnce("foo") // -> "foo"
 logOnce("bar") // -> нет эффекта
 */
-function once() {
+function once(func) {
+    
+    let call=false;
+    let res;
+
+    return function() {
+        if (call==false) {
+            res=func.apply(this, arguments);
+            call=true;
+        }
+        else {
+            return undefined;
+        }
+        return res;
+    }
 
 }
 

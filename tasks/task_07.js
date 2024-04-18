@@ -7,7 +7,23 @@
 // runLengthEncoding("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbb")
 //  // => [[34,'a'], [3,'b']]
 function runLengthEncoding(str) {
-    return []
+  let n = 1;
+  let arr = [];
+
+  for (let i = 1; i<str.length; i++) {
+    if (str[i-1]==str[i]) {
+      n++;
+    } else {
+      arr.push([n, str[i-1]]);
+      n = 1;
+    }
+
+    if (i==str.length-1) {
+      arr.push([n, str[i]]);
+    }
+  }
+
+  return arr;
 }
 
 

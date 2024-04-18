@@ -3,7 +3,17 @@
 * */
 
 function abs(array) {
+    let n=0;
+    let res;
 
+    for (let i=0; i<array.length; i++) {
+        n=n+array[i];
+    }
+    
+    res=n/array.length;
+    res=+res.toFixed(1);
+
+    return res;
 }
 
 
